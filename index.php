@@ -10,11 +10,14 @@
         		<div class="infos">
         			 <?php echo __("by", "lh")." ".get_the_author()." ".__("at")." ".get_the_date(); ?>
         		</div>
-        		<div class="comments">
-        			<i class="icon-comment">
-        			</i>
-        			<span class="comments_number"><?php comments_number(); ?></span>
-        		</div>
+        		<?php if(comments_open()): ?>
+	        		<div class="comments">
+	        			<a href="<?php comments_link() ?>">
+		        			<i class="icon-comment"></i>
+		        			<span class="comments_number"><?php comments_number(); ?></span>
+	        			</a>
+	        		</div>
+        		<?php endif; ?>
         	</div>
         </article>
     
