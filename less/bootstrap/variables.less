@@ -28,6 +28,7 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
+@fbBlue:				#3b5998;
 
 
 // Scaffolding
@@ -38,19 +39,19 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
+@linkColor:             @fbBlue;
+@linkColorHover:        @fbBlue;
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFontFamily:        'lucida grande',tahoma,verdana,arial,sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@baseFontSize:          14px;
+@baseFontSize:          13px;
 @baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        20px;
+@baseLineHeight:        17px;
 @altFontFamily:         @serifFontFamily;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily

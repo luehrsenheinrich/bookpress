@@ -1,4 +1,4 @@
-wp2fb
+FB Page Management Theme
 =====
 
-WP Facebook Page Management
+Wordpress Theme to manage Facebook Pages
