@@ -16,7 +16,7 @@
     });
 
     // Additional initialization code such as adding Event Listeners goes here
-    FB.Canvas.setSize();
+    FB.Canvas.setAutoGrow();
 
   };
 
