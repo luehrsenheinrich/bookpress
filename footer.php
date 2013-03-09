@@ -16,6 +16,7 @@
     });
 
     // Additional initialization code such as adding Event Listeners goes here
+    FB.Canvas.scrollTo(0,0);
     FB.Canvas.setSize({ width: 810, height: $("body").outerHeight() });
     setTimeout(function(){
     	    FB.Canvas.setAutoGrow();
