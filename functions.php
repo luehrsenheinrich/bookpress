@@ -12,6 +12,9 @@ if(!defined('WP_JS_URL')) {
 if(!defined('LANG_NAMESPACE')){
 	define( 'LANG_NAMESPACE', "lh");	
 }
+if(!defined('FB_APP_ID')){
+	define( 'FB_APP_ID', '414125188601439');
+}
 
 
 /*
