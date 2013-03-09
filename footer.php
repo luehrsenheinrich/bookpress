@@ -18,6 +18,9 @@
     // Additional initialization code such as adding Event Listeners goes here
     FB.Canvas.setSize();
     console.log(FB.Canvas);
+    setTimeout(function(){
+    	FB.Canvas.setSize();
+    }, 1000);
 
   };
 
