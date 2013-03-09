@@ -66,6 +66,21 @@ function lh_enqueue_scripts(){
 add_action("wp_enqueue_scripts", "lh_enqueue_scripts");
 
 
+/**
+ * Setup the images and image sizes needed in this theme
+ * Called by action "after_setup_theme"
+ *
+ * @author Hendrik Luehrsen
+ * @since 1.0
+ *
+ * @return void
+ */
+function setup_images(){
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 810, 455 );
+}
+add_action("after_setup_theme", "setup_images");
+
 /*
  * Clean up the header 
  */ 
