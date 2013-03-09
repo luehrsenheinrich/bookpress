@@ -14,6 +14,27 @@
 		}
 		div.post_thumbnail {
 			border-bottom:  1px solid @grayLighter;
+			position: relative;
+			width: 100%;
+			height: 330px;
+			
+			img {
+				.border-radius(5px 5px 0 0)
+			}
+			
+			h2.headline {
+				color: #fff;
+				position:  absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding: 15px;
+				
+				a {
+					color: #fff;
+					text-shadow: 0 0 2px #000;
+				}
+			}
 		}
 		div.the_content {
 			padding: 15px 15px;
@@ -22,6 +43,8 @@
 		
 		div.the_meta {
 			color: @grayLight;
+			font-size: 11px;
+			line-height: 14px;
 			
 			div.infos {
 				padding: 5px 15px;

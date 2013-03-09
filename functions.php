@@ -77,7 +77,7 @@ add_action("wp_enqueue_scripts", "lh_enqueue_scripts");
  */
 function setup_images(){
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 810, 455 );
+	set_post_thumbnail_size( 810, 330 );
 }
 add_action("after_setup_theme", "setup_images");
 

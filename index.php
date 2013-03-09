@@ -4,13 +4,15 @@
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     
     	<article <?php post_class("span12"); ?>>
-        	<h2 class="headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         	<?php if(has_post_thumbnail()): ?>
         		<div class="post_thumbnail">
         			<a href="<?php the_permalink(); ?>">
 	        			<?php the_post_thumbnail(); ?>
         			</a>
+        			<h2 class="headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         		</div>
+        	<?php else: ?>
+        	    <h2 class="headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         	<?php endif; ?>
         	<div class="the_content"><?php the_content(); ?></div>
         	<div class="the_meta">
