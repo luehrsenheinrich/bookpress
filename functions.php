@@ -20,8 +20,9 @@ if(!defined('FB_APP_ID')){
 /*
  * Include needed files
  */
-require_once( dirname( __FILE__ ) . "/sources/theme_functions.php" ); // L//H Theme Functions
-require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); // The Less compiler
+require_once( dirname( __FILE__ ) . "/sources/theme_functions.php" ); 	// L//H Theme Functions
+require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less compiler
+require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
 
 
 /*
