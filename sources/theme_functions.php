@@ -105,7 +105,7 @@ add_action('admin_bar_menu', 'lh_change_toolbar', 999);
  */
 function lh_htaccess_contents( $rules )
 {
-	$my_content = <<<EOD
+$my_content = <<<EOD
 \n# BEGIN L//H Content
 <IfModule mod_deflate.c>
  SetOutputFilter DEFLATE
@@ -173,6 +173,28 @@ function lh_login_logo_url_title() {
     return 'Luehrsen // Heinrich - Agentur für Medienkommunikation';
 }
 add_filter( 'login_headertitle', 'lh_login_logo_url_title' );
+
+
+/**
+ * Check for the RAW HTML Option and deactivate the filters if needed
+ *
+ * @author Hendrik Luehrsen
+ * @since 3.1
+ */
+function lh_check_raw_html($content){
+	global $post;
+	$raw_html = (bool) get_post_meta($post->ID, "_lh_raw_html", true);
+	
+	if($raw_html){
+		remove_filter('the_content', 'wpautop');
+		remove_filter('the_content', 'wptexturize');
+		remove_filter('the_content', 'convert_chars');
+		remove_filter('the_content', 'convert_smilies');
+	}
+	
+	return $content;
+}
+add_filter('the_content', 'lh_check_raw_html', 1);
 
 
 //

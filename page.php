@@ -3,9 +3,11 @@
 	
 if(have_posts()): the_post(); ?>
 
+	<div class="the_content">
 	<?php
 		the_content();
 	?>
+	</div>
 
 
 <?php endif;

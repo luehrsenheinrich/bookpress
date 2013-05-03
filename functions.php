@@ -16,11 +16,11 @@ if(!defined('FB_APP_ID')){
 	define( 'FB_APP_ID', '414125188601439');
 }
 
-
 /*
  * Include needed files
  */
 require_once( dirname( __FILE__ ) . "/sources/theme_functions.php" ); 	// L//H Theme Functions
+require_once( dirname( __FILE__ ) . "/less/lib/less.inc.php");
 require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less compiler
 require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
 
@@ -30,6 +30,10 @@ require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
  */
 $css_file = dirname(__FILE__).'/style_less.css';
 $less_file = dirname(__FILE__).'/less/style.less';
+autoCompileLess($less_file,$css_file); 
+
+$css_file = dirname(__FILE__).'/admin/admin.css';
+$less_file = dirname(__FILE__).'/admin/less/admin.less';
 autoCompileLess($less_file,$css_file); 
 
 
@@ -71,6 +75,22 @@ add_action("wp_enqueue_scripts", "lh_enqueue_scripts");
 
 
 /**
+ * Enqueue the needed scripts and styles in the backend
+ * Called by action "admin_enqueue_scripts"
+ *
+ * @author Hendrik Luehrsen
+ * @since 1.0
+ * 
+ * @return void
+ */
+function lh_enqueue_scripts_admin(){
+	wp_enqueue_script("wp2fb", WP_JS_URL.'/admin.js', array("jquery"), 1, true);
+	wp_enqueue_style('wp2fb', WP_THEME_URL.'/admin/admin.css', NULL, '2.0', 'all');
+}
+add_action("admin_enqueue_scripts", "lh_enqueue_scripts_admin");
+
+
+/**
  * Setup the images and image sizes needed in this theme
  * Called by action "after_setup_theme"
  *
@@ -80,7 +100,7 @@ add_action("wp_enqueue_scripts", "lh_enqueue_scripts");
  * @return void
  */
 function setup_images(){
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array( 'post' ) );
 	set_post_thumbnail_size( 810, 330, true );
 }
 add_action("after_setup_theme", "setup_images");

@@ -1,3 +1,6 @@
+<?php
+	global $post;
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,6 +13,20 @@
     <meta name="viewport" content="width=device-width">
     
     <?php wp_head(); ?>
+    
+    <?php
+    	if(is_singular()){
+	    	$styles = get_post_meta($post->ID, "_styles", true);
+	    	if(isset($styles['css']) && $styles['css'] != ""){
+		    	?>
+		    		<!-- Post/Page Styles -->
+		    		<style type="text/css">
+		    			<?=$styles['css']?>
+		    		</style>
+		    	<?
+	    	}
+    	}
+    ?>
 
 </head>
 <body <?php body_class(); ?>>
