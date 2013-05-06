@@ -136,11 +136,11 @@ function facebook_settings($object, $box){
 	?>
 	<p>
 		<label for="facebook_appid"><?php _e("Facebook App ID", "wp2fb"); ?></label>
-		<input type="text" class="widefat" name="fb_settings[appid]" id="facebook_appid" placeholder="<?php _e("12345ABCDEF", "wp2fb"); ?>" />
+		<input type="text" class="widefat" name="fb_settings[appid]" id="facebook_appid" placeholder="<?php _e("12345ABCDEF", "wp2fb"); ?>" value="<?=$fb_settings['appid']?>" />
 	</p>
 	<p>
 		<label for="facebook_secret"><?php _e("Facebook App Secret", "wp2fb"); ?></label>
-		<input type="text" class="widefat" name="fb_settings[secret]" id="facebook_secret" placeholder="<?php _e("12345ABCDEF", "wp2fb"); ?>" />
+		<input type="text" class="widefat" name="fb_settings[secret]" id="facebook_secret" placeholder="<?php _e("12345ABCDEF", "wp2fb"); ?>" value="<?=$fb_settings['secret']?>"/>
 	</p>
 	<p>
 		<a href="#add_page_tab" onclick="open_add_page_tab_dialog()"><?php _e("Add Page Tab to Facebook Page", "wp2fb"); ?></a>
@@ -162,19 +162,18 @@ function lh_box_save( $post_id, $post ) {
 	 */
 	 
 	 lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'lh_raw_html', '_lh_raw_html');
-	 
+	 lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'fb_settings', '_fb_settings');
+
 	 // Save the Less & CSS Stuff
-	 if(isset($_POST['styles']['less']) && $_POST['styles']['less'] != ""){
-	 	try {
-			$less = new lessc;
-			$less->setFormatter("compressed");
-			$_POST['styles']['css'] = $less->compile($_POST['styles']['less']);
-			lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'styles', '_styles');
-		} catch(Exception $e){
-			wp_die($e->getMessage());
-			die();
-		}
-	 }
+ 	try {
+		$less = new lessc;
+		$less->setFormatter("compressed");
+		$_POST['styles']['css'] = $less->compile($_POST['styles']['less']);
+		lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'styles', '_styles');
+	} catch(Exception $e){
+		wp_die($e->getMessage());
+		die();
+	}
 	 
 }
 
