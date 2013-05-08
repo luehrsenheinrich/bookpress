@@ -105,9 +105,7 @@ function less_css_box($object, $box){
 		$styles = array();
 	}
 	?>
-	<p>
-		<textarea name="styles[less]" class="large-text" id="less-textarea" rows="5" placeholder="<?php _e("Put CSS styles here", "wp2fb"); ?>"><?=$styles['less']?></textarea>
-	</p>
+	<textarea name="styles[less]" class="large-text" id="less-textarea" rows="5" placeholder="<?php _e("Put CSS styles here", "wp2fb"); ?>"><?=$styles['less']?></textarea>
 	<p>
 		<?php _e('You can use basic CSS, <a href="http://www.lesscss.org" target="_blank">LESS</a> and all the mixins of <a href="http://getbootstrap.com" target="_blank">Twitter Bootstrap</a>.', "wp2fb"); ?><br />
 		<?php _e('The styles used here will only appear on this page.', "wp2fb"); ?>

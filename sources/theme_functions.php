@@ -197,6 +197,12 @@ function lh_check_raw_html($content){
 add_filter('the_content', 'lh_check_raw_html', 1);
 
 
+function tinymce_init( $init ) {
+//    $init['wpautop'] = false;
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'tinymce_init');
+
 //
 // EOF
 //

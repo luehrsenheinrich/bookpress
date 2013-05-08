@@ -85,6 +85,15 @@ add_action("wp_enqueue_scripts", "lh_enqueue_scripts");
  */
 function lh_enqueue_scripts_admin(){
 	wp_enqueue_script("wp2fb", WP_JS_URL.'/admin.js', array("jquery"), 1, true);
+	
+	wp_enqueue_script("codemirror", WP_JS_URL.'/codemirror/codemirror.js', NULL, 1, true);
+	
+	wp_enqueue_script("less", WP_JS_URL.'/codemirror/mode/less.js', NULL, 1, true);
+	wp_enqueue_script("less", WP_JS_URL.'/codemirror/mode/htmlmixed.js', NULL, 1, true);
+
+	wp_enqueue_script("matchingbrackets", WP_JS_URL.'/codemirror/addon/edit/matchbrackets.js', NULL, 1, true);
+
+	
 	wp_enqueue_style('wp2fb', WP_THEME_URL.'/admin/admin.css', NULL, '2.0', 'all');
 }
 add_action("admin_enqueue_scripts", "lh_enqueue_scripts_admin");

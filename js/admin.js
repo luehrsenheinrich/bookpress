@@ -19,6 +19,14 @@ jQuery(document).ready(function($){
 	});
 	
 	$("#less-textarea").autosize();
+	
+	var less_editor = CodeMirror.fromTextArea(document.getElementById("less-textarea"), {
+        theme: "lesser-dark",
+        mode: "text/x-less",
+        lineNumbers : true,
+        matchBrackets : true
+    });
+
 });
 
 function open_add_page_tab_dialog(){
