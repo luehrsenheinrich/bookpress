@@ -88,8 +88,7 @@ function lh_enqueue_scripts_admin(){
 	
 	wp_enqueue_script("codemirror", WP_JS_URL.'/codemirror/codemirror.js', NULL, 1, true);
 	
-	wp_enqueue_script("less", WP_JS_URL.'/codemirror/mode/less.js', NULL, 1, true);
-	wp_enqueue_script("less", WP_JS_URL.'/codemirror/mode/htmlmixed.js', NULL, 1, true);
+	wp_enqueue_script("cm-less", WP_JS_URL.'/codemirror/mode/less.js', NULL, 1, true);
 
 	wp_enqueue_script("matchingbrackets", WP_JS_URL.'/codemirror/addon/edit/matchbrackets.js', NULL, 1, true);
 

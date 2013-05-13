@@ -194,14 +194,50 @@ function lh_check_raw_html($content){
 	
 	return $content;
 }
-add_filter('the_content', 'lh_check_raw_html', 1);
+add_filter( 'the_content', 'lh_check_raw_html', 1);
 
-
-function tinymce_init( $init ) {
-//    $init['wpautop'] = false;
-    return $init;
+/**
+ * Check for the RAW HTML Option and deactivate tinymce if needed
+ *
+ * @author Hendrik Luehrsen
+ * @since 3.1
+ */
+function lh_disable_editor(){
+	global $post;
+	$raw_html = (bool) get_post_meta($post->ID, "_lh_raw_html", true);
+	if($raw_html){
+		add_filter("user_can_richedit", "__return_false");
+	}
 }
-add_filter('tiny_mce_before_init', 'tinymce_init');
+add_action( 'edit_form_after_title', 'lh_disable_editor' );
+
+/**
+ * Check for the edit page and see, if we need to implement codemirror
+ */
+function lh_activate_codemirror(){
+	global $post, $pagenow;
+	$raw_html = (bool) get_post_meta($post->ID, "_lh_raw_html", true);
+	if($pagenow == "post.php" & $post->post_type == "page"){
+		?>
+		<script type="text/javascript">
+			var initLessEditor = true;
+		<?php if($raw_html): ?>
+			var initHtmlEditor = true;
+		<?php endif ?>
+		</script>
+		<?php
+		
+		if($raw_html){
+			wp_enqueue_script("cm-xml", WP_JS_URL.'/codemirror/mode/xml.js', NULL, 1, true);
+			wp_enqueue_script("cm-css", WP_JS_URL.'/codemirror/mode/css.js', NULL, 1, true);
+			wp_enqueue_script("cm-javascript", WP_JS_URL.'/codemirror/mode/javascript.js', NULL, 1, true);
+			wp_enqueue_script("cm-htmlmixed", WP_JS_URL.'/codemirror/mode/htmlmixed.js', NULL, 1, true);
+			wp_enqueue_script("cm-closetag", WP_JS_URL.'/codemirror/addon/edit/closetag.js', NULL, 1, true);
+		}
+	}
+}
+add_action( 'admin_head', 'lh_activate_codemirror' );
+
 
 //
 // EOF
