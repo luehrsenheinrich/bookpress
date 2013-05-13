@@ -23,6 +23,7 @@ jQuery(document).ready(function($){
 	        theme: "eclipse",
 	        mode: "text/x-less",
 	        lineNumbers : true,
+	        lineWrapping: true,
 	        matchBrackets : true
 	    });
     }
@@ -33,6 +34,7 @@ jQuery(document).ready(function($){
 	        mode: "text/html",
 	        lineNumbers : true,
 	        matchBrackets : true,
+	        lineWrapping: true,
 	        autoCloseTags: true
 	    });
     }
