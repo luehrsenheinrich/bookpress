@@ -166,7 +166,11 @@ function lh_box_save( $post_id, $post ) {
  	try {
 		$less = new lessc;
 		$less->setFormatter("compressed");
-		$_POST['styles']['css'] = $less->compile($_POST['styles']['less']);
+		$less->setImportDir(array(get_stylesheet_directory().'/less/bootstrap/'));
+		$less_code = '@import "mixins.less"; '.$_POST['styles']['less'];
+
+		$_POST['styles']['css'] = $less->compile($less_code);
+	
 		lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'styles', '_styles');
 	} catch(Exception $e){
 		wp_die($e->getMessage());
