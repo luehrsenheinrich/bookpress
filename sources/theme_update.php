@@ -54,13 +54,12 @@ class lh_theme_updater {
 			$response = array(
 					"package" 		=> "https://github.com/".$this->theme_repo_user."/".$this->theme_repo_name."/archive/".$this->theme_repo_branch.".zip",
 					"new_version"	=> $repo_theme_data['Version'],
-					"url"			=> "https://github.com/".$this->theme_repo_user."/".$this->theme_repo_name."/archive/".$this->theme_repo_branch.".zip",
+					"url"			=> "http://wordpress.org/themes/twentyeleven",
 			);
 			
 			$checked_data->response[$theme_base] = $response;
 		}
 		
-		var_dump($checked_data);
 	
 		return $checked_data;
 	}	
