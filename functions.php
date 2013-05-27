@@ -23,6 +23,7 @@ require_once( dirname( __FILE__ ) . "/sources/theme_functions.php" ); 	// L//H T
 require_once( dirname( __FILE__ ) . "/less/lib/less.inc.php");
 require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less compiler
 require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
+require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );
 
 
 /*

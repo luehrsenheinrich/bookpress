@@ -3,7 +3,7 @@
 	
 if(have_posts()): the_post(); ?>
 
-	<div class="the_content">
+	<div class="the_content container">
 	<?php
 		the_content();
 	?>
