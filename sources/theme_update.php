@@ -19,7 +19,9 @@ class lh_theme_updater {
 		$this->theme_repo_branch = $branch;
 	
 		add_filter('pre_set_site_transient_update_themes', array($this, "theme_update"));
-		set_site_transient('update_themes', null);
+		
+		// Uncomment only in dev!
+		// set_site_transient('update_themes', null);
 	}
 	
 	
