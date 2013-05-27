@@ -6,15 +6,27 @@
  
 class lh_theme_updater {
 	
-	var $theme_repo_user = "luehrsenheinrich";
-	var $theme_repo_name = "bookpress";
-	var $theme_repo_branch = "stable";
+	var $theme_repo_user, $theme_repo_name, $theme_repo_branch;
 	
-	public function __construct(){
+	
+	
+	/**
+	 * Constructing the class
+	 */
+	public function __construct($user, $repo, $branch){
+		$this->theme_repo_user = $user;
+		$this->theme_repo_name = $repo;
+		$this->theme_repo_branch = $branch;
+	
 		add_filter('pre_set_site_transient_update_themes', array($this, "theme_update"));
 		set_site_transient('update_themes', null);
 	}
-
+	
+	
+	
+	/**
+	 * Look into the theme github repo and check, if the version number in style.css is higher than the current version number
+	 */
 	public function theme_update($checked_data) {
 		global $wp_version;
 		
@@ -24,20 +36,6 @@ class lh_theme_updater {
 		
 	    $theme_data = wp_get_theme();
 	    $theme_base = get_option('template');
-	
-
-		
-		/* Start checking for an update
-		$send_for_check = array(
-			'body' => array(
-				'action' => 'theme_update', 
-				'request' => serialize($request),
-				'api-key' => md5(get_bloginfo('url'))
-			),
-			'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo('url')
-		);
-		$raw_response = wp_remote_post($api_url, $send_for_check);
-		*/
 		
 		$api_url = "https://api.github.com/repos/".$this->theme_repo_user."/".$this->theme_repo_name."/contents/style.css?ref=".$this->theme_repo_branch;
 		$raw_response = wp_remote_get($api_url);
@@ -54,7 +52,7 @@ class lh_theme_updater {
 			$response = array(
 					"package" 		=> "https://github.com/".$this->theme_repo_user."/".$this->theme_repo_name."/archive/".$this->theme_repo_branch.".zip",
 					"new_version"	=> $repo_theme_data['Version'],
-					"url"			=> "http://wordpress.org/themes/twentyeleven",
+					"url"			=> "https://github.com/".$this->theme_repo_user."/".$this->theme_repo_name."/",
 			);
 			
 			$checked_data->response[$theme_base] = $response;
@@ -64,6 +62,11 @@ class lh_theme_updater {
 		return $checked_data;
 	}	
 	
+	
+	
+	/**
+	 * Parse the header information from the style.css and return the retrived values
+	 */
 	private function parse_header_data($style){
 	
 	    $file_data = str_replace( "\r", "\n", $style );
@@ -94,4 +97,4 @@ class lh_theme_updater {
 	}
 }
 
-$lh_theme_updater = new lh_theme_updater();
+$lh_theme_updater = new lh_theme_updater("luehrsenheinrich", "bookpress", "stable");
