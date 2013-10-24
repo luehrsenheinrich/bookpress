@@ -10,10 +10,10 @@ if(!defined('WP_JS_URL')) {
 	define( 'WP_JS_URL' , get_bloginfo('template_url').'/js');
 }	
 if(!defined('LANG_NAMESPACE')){
-	define( 'LANG_NAMESPACE', "lh");	
+	define( 'LANG_NAMESPACE', "bp");	
 }
 if(!defined('FB_APP_ID')){
-	define( 'FB_APP_ID', '414125188601439');
+	define( 'FB_APP_ID', '414125188601439'); // This is the default bookpress app id, used as a fallback
 }
 
 /*
@@ -138,6 +138,6 @@ remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
  * @return void
  */
 function lh_load_theme_textdomain(){
-    load_theme_textdomain('lh', get_template_directory() . '/lang');
+    load_theme_textdomain(LANG_NAMESPACE, get_template_directory() . '/lang');
 }
 add_action('after_setup_theme', 'lh_load_theme_textdomain');
