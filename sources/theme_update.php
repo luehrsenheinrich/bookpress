@@ -1,17 +1,21 @@
 <?php
+
 /**
- * File that handles the auto update function of this theme.
- * The theme Files reside in the github repo, on new version it gets updated from there
+ * The lh_theme_updater class hooks into the wordpress theme update functions and provides theme update functionality from a github repository.
  */
- 
 class lh_theme_updater {
 	
 	var $theme_repo_user, $theme_repo_name, $theme_repo_branch;
 	
-	
-	
 	/**
-	 * Constructing the class
+	 * The constructor for class lh_theme updater.
+	 * 
+	 * @access public
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @param string $user The github.com username, who is the owner of the repository.
+	 * @param string $repo The name of the github.com repository
+	 * @param string $branch The name of the repository branch
+	 * @return void
 	 */
 	public function __construct($user, $repo, $branch){
 		$this->theme_repo_user = $user;
@@ -24,10 +28,14 @@ class lh_theme_updater {
 		// set_site_transient('update_themes', null);
 	}
 	
-	
-	
 	/**
-	 * Look into the theme github repo and check, if the version number in style.css is higher than the current version number
+	 * This function looks into the github repo for updates.
+	 * The function is called by the 'pre_set_site_transient_update_themes' filter and compares verion numbers in the style.css if an update is nessecary.
+	 * 
+	 * @access public
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @param object $checked_data The object that contains update options and functions. Passed in by the filter.
+	 * @return array $checked_data
 	 */
 	public function theme_update($checked_data) {
 		global $wp_version;
@@ -64,10 +72,13 @@ class lh_theme_updater {
 		return $checked_data;
 	}	
 	
-	
-	
 	/**
-	 * Parse the header information from the style.css and return the retrived values
+	 * Parses the information from the style.css header and returns and array containing the information.
+	 * 
+	 * @access private
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @param string $style The content of the style.css file
+	 * @return array $all_headers The clean headers of the style.css as array
 	 */
 	private function parse_header_data($style){
 	
