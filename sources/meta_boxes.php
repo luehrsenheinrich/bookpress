@@ -162,19 +162,21 @@ function lh_box_save( $post_id, $post ) {
 	 lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'lh_raw_html', '_lh_raw_html');
 	 lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'fb_settings', '_fb_settings');
 
-	 // Save the Less & CSS Stuff
- 	try {
-		$less = new lessc;
-		$less->setFormatter("compressed");
-		$less->setImportDir(array(get_stylesheet_directory().'/less/bootstrap/'));
-		$less_code = '@import "mixins.less"; '.$_POST['styles']['less'];
-
-		$_POST['styles']['css'] = $less->compile($less_code);
+	// Save the Less & CSS Stuff
+	if(is_array($_POST['styles']) && isset($_POST['styles']['less'])){
+	 	try {
+			$less = new lessc;
+			$less->setFormatter("compressed");
+			$less->setImportDir(array(get_stylesheet_directory().'/less/bootstrap/'));
+			$less_code = '@import "variables.less"; @import "mixins.less"; '.$_POST['styles']['less'];
 	
-		lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'styles', '_styles');
-	} catch(Exception $e){
-		wp_die($e->getMessage());
-		die();
+			$_POST['styles']['css'] = $less->compile($less_code);
+		
+			lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'styles', '_styles');
+		} catch(Exception $e){
+			wp_die($e->getMessage());
+			die();
+		}
 	}
 	 
 }
