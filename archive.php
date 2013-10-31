@@ -38,7 +38,7 @@
     	if(function_exists("wp_pagenavi")){
 	    	wp_pagenavi();
     	} else {
-	    	wp_page_menu();
+	    	posts_nav_link();
     	}
     ?>
 </div>
