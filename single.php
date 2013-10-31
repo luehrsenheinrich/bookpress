@@ -33,6 +33,11 @@
         </article>
     </div>
     <?php endwhile; endif; ?>
-</div>
+    
+    <div class="pagination">
+    <?php $back =$_SERVER['HTTP_REFERER'];
+	    if(isset($back) && $back !='') echo '<a href="'.$back.'">Go back</a>';?>
+    </div>
+</div>	
 
 <?php get_footer(); ?>
