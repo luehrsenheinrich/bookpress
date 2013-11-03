@@ -12,7 +12,7 @@
         	<?php else: ?>
         	    <h2 class="headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         	<?php endif; ?>
-        	<div class="the_content"><?php echo lh_shorten_text(strip_tags(get_the_content('')), 350); ?></div>
+        	<div class="the_content"><?php echo strip_tags(get_the_content('')); ?></div>
         	<div class="the_meta clearfix">
         		<div class="infos">
         			 <?php echo __("by", "lh")." ".get_the_author()." ".__("at")." ".get_the_date(); ?>
