@@ -43,11 +43,11 @@ class lh_fb_toolset {
 		if(isset($_POST['signed_request'])){ // First visit of the user, retrive and store that stuff!
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
 			if($this->signed_request){
-				setcookie('bp_signed_request', base64_encode(serialize($this->signed_request)));
+				setcookie('bp_signed_request', urlencode( base64_encode( serialize( $this->signed_request ) ) ) );
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = unserialize( base64_decode( $COOKIE['bp_signed_request'] ) );
-			var_dump($_COOKIE['bp_signed_request'], ( base64_decode( $COOKIE['bp_signed_request'] ) ), $this->signed_request);
+			var_dump($_COOKIE['bp_signed_request'], unserialize( base64_decode( urldecode( $COOKIE['bp_signed_request'] ) ) ), $this->signed_request);
 		} else {
 			$this->signed_request = false;
 		}
