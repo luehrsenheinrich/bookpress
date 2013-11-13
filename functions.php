@@ -49,7 +49,7 @@ function init_bookpress(){
 	
 	$lh_fb_toolset = new lh_fb_toolset();
 	
-	var_dump($lh_fb_toolset->get_signed_request(), "this");
+	var_dump($lh_fb_toolset->get_signed_request());
 }
 add_action("wp", "init_bookpress", 9999);
 
