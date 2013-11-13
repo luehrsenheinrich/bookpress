@@ -48,6 +48,7 @@ class lh_fb_toolset {
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], $this->fb_secret);
+			var_dump($this->signed_request);
 		} else {
 			$this->signed_request = false;
 		}
@@ -70,6 +71,7 @@ class lh_fb_toolset {
 		
 		// confirm the signature
 		$expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+		var_dump($sig, $expected_sig);
 		if ($sig !== $expected_sig) {
 			error_log('Bad Signed JSON signature!');
 			return null;
