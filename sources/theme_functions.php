@@ -240,23 +240,7 @@ function lh_activate_codemirror(){
 add_action( 'admin_head', 'lh_activate_codemirror' );
 
 
-/**
- * Check if the current visitor is the facebook crawler.
- * 
- * @access public
- * @return void
- */
-function is_facebook_crawl(){
-	if (in_array($_SERVER['HTTP_USER_AGENT'], array(
-	  'facebookexternalhit/1.1 (+https://www.facebook.com/externalhit_uatext.php)',
-	  'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)'
-	))) {
-	  return true;
-	}
-	else {
-	  return false;
-	}
-}
+
 
 //
 // EOF

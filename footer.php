@@ -8,7 +8,7 @@
   window.fbAsyncInit = function() {
     // init the FB JS SDK
     FB.init({
-      appId      : '<?php global $_bp_app_id; echo $_bp_app_id; ?>', // App ID from the App Dashboard
+      appId      : '<?php echo FB_APP_ID; ?>', // App ID from the App Dashboard
       channelUrl : '<?php echo WP_THEME_URL; ?>/channel.php', // Channel File for x-domain communication
       status     : true, // check the login status upon init?
       cookie     : true, // set sessions cookies to allow your server to access the session?

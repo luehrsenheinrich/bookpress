@@ -13,11 +13,6 @@ if(!defined('LANG_NAMESPACE')){
 	define( 'LANG_NAMESPACE', "bp");	
 }
 
-global $_bp_app_id;
-if(!isset($_bp_app_id)){
-	$_bp_app_id = '414125188601439'; // This is the default bookpress app id, used as a fallback
-}
-
 /*
  * Include needed files
  */
@@ -27,6 +22,7 @@ require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less contr
 require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );		// Theme Meta Boxes
 require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );		// Update the Theme via Github
 require_once( dirname( __FILE__ ) . "/sources/lh.opengraph.php" );		// Open Graph Function
+require_once( dirname( __FILE__ ) . "/sources/lh.facebook.php" );		// Facebook Functions
 
 
 
@@ -41,6 +37,21 @@ $css_file = dirname(__FILE__).'/admin/admin.css';
 $less_file = dirname(__FILE__).'/admin/less/admin.less';
 autoCompileLess($less_file,$css_file); 
 
+
+function init_bookpress(){
+	if(!defined('FB_APP_ID')){
+		define( 'FB_APP_ID', '414125188601439');	
+	}
+	
+	if(!defined('FB_APP_SECRET')){
+		define( 'FB_APP_SECRET', 'false');
+	}
+	
+	$lh_fb_toolset = new lh_fb_toolset();
+	
+	var_dump($lh_fb_toolset->get_signed_request());
+}
+add_action("wp", "init_bookpress", 9999);
 
 /**
  * Enqueue the needed scripts and styles in the frontend
