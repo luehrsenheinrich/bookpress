@@ -6,7 +6,7 @@
  */
 class lh_fb_toolset {
 	
-	private $signed_request, $fb_secret, $fb_appid;
+	private $signed_request;
 	
 	/**
 	 * __construct function.
@@ -17,10 +17,7 @@ class lh_fb_toolset {
 	 * @return void
 	 */
 	public function __construct(){
-		$this->fb_appid = FB_APP_ID;
-		$this->fb_secret = FB_APP_SECRET;
-		
-		$this->load_signed_request();
+		add_action("wp", array($this, "load_signed_request"), 10000);
 	}
 	
 	/**
@@ -39,14 +36,14 @@ class lh_fb_toolset {
 	 * @access public
 	 * @return void
 	 */
-	private function load_signed_request(){
+	public function load_signed_request(){
 		if(isset($_POST['signed_request'])){ // First visit of the user, retrive and store that stuff!
-			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
+			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], FB_APP_SECRET);
 			if($this->signed_request){
 				setcookie('bp_signed_request', $_POST['signed_request'] );
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
-			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], $this->fb_secret);
+			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], FB_APP_SECRET);
 		} else {
 			$this->signed_request = false;
 		}
@@ -102,7 +99,8 @@ class lh_fb_toolset {
 		return base64_decode(strtr($input, '-_', '+/'));
 	}
 }
+$lh_fb_toolset = new lh_fb_toolset();
 
 function is_in_fb_page_tab(){
-	$lh_fb_toolset->is_in_fb_page_tab();
+	return $lh_fb_toolset->is_in_fb_page_tab();
 }
