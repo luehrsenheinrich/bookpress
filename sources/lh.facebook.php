@@ -102,5 +102,7 @@ class lh_fb_toolset {
 $lh_fb_toolset = new lh_fb_toolset();
 
 function is_in_fb_page_tab(){
+	global $lh_fb_toolset;
+	
 	return $lh_fb_toolset->is_in_fb_page_tab();
 }
