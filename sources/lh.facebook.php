@@ -43,7 +43,9 @@ class lh_fb_toolset {
 				var_dump($_POST['signed_request'], $_COOKIE['bp_signed_request'], FB_APP_SECRET);
 		if(isset($_POST['signed_request'])){ // First visit of the user, retrive and store that stuff!
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
-			setcookie('bp_signed_request', $_POST['signed_request']);
+			if($this->signed_request){
+				setcookie('bp_signed_request', $_POST['signed_request']);
+			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], $this->fb_secret);
 		} else {
