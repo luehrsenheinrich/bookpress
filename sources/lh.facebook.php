@@ -40,6 +40,7 @@ class lh_fb_toolset {
 	 * @return void
 	 */
 	public function load_signed_request(){
+				var_dump($_POST['signed_request'], $_COOKIE['bp_signed_request'], FB_APP_SECRET);
 		if(isset($_POST['signed_request'])){ // First visit of the user, retrive and store that stuff!
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
 			setcookie('bp_signed_request', $_POST['signed_request']);
@@ -60,7 +61,7 @@ class lh_fb_toolset {
 	 */
 	private function parse_signed_request($signed_request, $secret) {
 		list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
-		
+				
 		// decode the data
 		$sig = $this->base64_url_decode($encoded_sig);
 		$data = json_decode($this->base64_url_decode($payload), true);
