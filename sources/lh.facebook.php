@@ -30,7 +30,7 @@ class lh_fb_toolset {
 	 * @return void
 	 */
 	public function get_signed_request(){
-		return $signed_request;
+		return $this->signed_request;
 	}
 	
 	/**
