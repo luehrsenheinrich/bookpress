@@ -45,9 +45,7 @@ function init_bookpress(){
 	
 	if(!defined('FB_APP_SECRET')){
 		define( 'FB_APP_SECRET', 'false');
-	}
-	
-	$this->load_signed_request();
+	}	
 }
 add_action("wp", "init_bookpress", 9999);
 
