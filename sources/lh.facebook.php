@@ -71,9 +71,8 @@ class lh_fb_toolset {
 		
 		// confirm the signature
 		$expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
-		var_dump($sig, $expected_sig);
 		if ($sig !== $expected_sig) {
-			error_log('Bad Signed JSON signature!');
+			var_dump('Bad Signed JSON signature!');
 			return null;
 		}
 		
