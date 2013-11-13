@@ -30,7 +30,6 @@ class lh_fb_toolset {
 	 * @return void
 	 */
 	public function get_signed_request(){
-		var_dump($this->signed_request);
 		return $this->signed_request;
 	}
 	
@@ -45,13 +44,12 @@ class lh_fb_toolset {
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
 			if($this->signed_request){
 				setcookie('bp_signed_request', serialize($this->signed_request));
-				var_dump(serialize($this->signed_request));
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
-			var_dump( unserialize ( stripslashes( $_COOKIE['bp_signed_request'] ) ) );
 			$this->signed_request = unserialize( stripslashes( $COOKIE['bp_signed_request'] ) );
+			var_dump($this->signed_request);
 		} else {
-			$this->signed_request = "test";
+			$this->signed_request = false;
 		}
 	}
 	
