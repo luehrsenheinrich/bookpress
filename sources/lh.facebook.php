@@ -53,6 +53,20 @@ class lh_fb_toolset {
 	}
 	
 	/**
+	 * is_in_fb_page_tab function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function is_in_fb_page_tab(){
+		if(isset($this->signed_request['page'])){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * parse_signed_request function.
 	 * 
 	 * @access private
@@ -87,4 +101,8 @@ class lh_fb_toolset {
 	private function base64_url_decode($input) {
 		return base64_decode(strtr($input, '-_', '+/'));
 	}
+}
+
+function is_in_fb_page_tab(){
+	$lh_fb_toolset->is_in_fb_page_tab();
 }
