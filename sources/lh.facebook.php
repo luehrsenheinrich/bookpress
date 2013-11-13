@@ -44,6 +44,7 @@ class lh_fb_toolset {
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], $this->fb_secret);
 			if($this->signed_request){
 				setcookie('bp_signed_request', $_POST['signed_request'] );
+				var_dump($_POST['signed_request']);
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = unserialize( urldecode( $COOKIE['bp_signed_request'] ) );
