@@ -17,18 +17,18 @@ class lh_open_graph {
 	 */
 	public function __construct($args){
 		
-		global $post;
+		global $post, $_bp_app_id;
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-thumbnail' );
 	
 		/**
 		 * Define the array of defaults
 		 */ 
 		$defaults = array(
-			'fb:app_id' 			=> LH_FB_APP_ID,
+			'fb:app_id' 			=> $_bp_app_id,
 			'og:type' 				=> "article",
-			'og:title' 			=> get_the_title(),
-			'og:image' 			=> $thumb[0],
-			'og:description'		=> shorten_text(strip_tags(apply_filters('the_content', $post->post_content)), 255),
+			'og:title' 				=> get_the_title(),
+			'og:image' 				=> $thumb[0],
+			'og:description'		=> lh_shorten_text(strip_tags(apply_filters('the_content', $post->post_content)), 255),
 			'og:url'				=> get_permalink(),
 			'og:site_name'			=> get_bloginfo("name"),
 		);
@@ -84,7 +84,7 @@ class lh_open_graph {
 }
 
 /**
- * lh_set_open_graph function.
+ * bp_set_open_graph function.
  * 
  * @access public
  * @param array $args (default: array())
