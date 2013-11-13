@@ -90,7 +90,7 @@ class lh_open_graph {
  * @param array $args (default: array())
  * @return void
  */
-function lh_set_open_graph($args = array()){
+function bp_set_open_graph($args = array()){
 	$lh_open_graph = new lh_open_graph($args);
 }
 

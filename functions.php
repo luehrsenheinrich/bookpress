@@ -22,11 +22,11 @@ if(!isset($_bp_app_id)){
  * Include needed files
  */
 require_once( dirname( __FILE__ ) . "/sources/theme_functions.php" ); 	// L//H Theme Functions
-require_once( dirname( __FILE__ ) . "/less/lib/less.inc.php");
-require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less compiler
-require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
-require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );
-require_once( dirname( __FILE__ ) . "/sources/lh.opengraph.php" );
+require_once( dirname( __FILE__ ) . "/less/lib/less.inc.php");			// The Less compiler
+require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less controller
+require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );		// Theme Meta Boxes
+require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );		// Update the Theme via Github
+require_once( dirname( __FILE__ ) . "/sources/lh.opengraph.php" );		// Open Graph Function
 
 
 
@@ -59,19 +59,6 @@ function lh_enqueue_scripts(){
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"), false, '1.9.1', true);
 	wp_enqueue_script('jquery');
-	
-	// Bootstrap
-	// wp_enqueue_script("bootstrap-transition", WP_JS_URL.'/bootstrap/bootstrap-transition.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-alert", WP_JS_URL.'/bootstrap/bootstrap-alert.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-button", WP_JS_URL.'/bootstrap/bootstrap-button.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-carousel", WP_JS_URL.'/bootstrap/bootstrap-carousel.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-dropdown", WP_JS_URL.'/bootstrap/bootstrap-dropdown.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-modal", WP_JS_URL.'/bootstrap/bootstrap-modal.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-scrollspy", WP_JS_URL.'/bootstrap/bootstrap-scrollspy.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-tab", WP_JS_URL.'/bootstrap/bootstrap-tab.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-tooltip", WP_JS_URL.'/bootstrap/bootstrap-tooltip.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-popover", WP_JS_URL.'/bootstrap/bootstrap-popover.js', array('jquery'), 2, true);
-	// wp_enqueue_script("bootstrap-typeahead", WP_JS_URL.'/bootstrap/bootstrap-typeahead.js', array('jquery'), 2, true);
 	
 	// Own Script Files
 	wp_enqueue_script("main", WP_JS_URL.'/main.js', array("jquery"), 1, true);
