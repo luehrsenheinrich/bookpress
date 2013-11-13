@@ -50,7 +50,7 @@ class lh_fb_toolset {
 			var_dump( unserialize ( stripslashes( $_COOKIE['bp_signed_request'] ) ) );
 			$this->signed_request = unserialize( stripslashes( $COOKIE['bp_signed_request'] ) );
 		} else {
-			$this->signed_request = false;
+			$this->signed_request = "test";
 		}
 	}
 	
