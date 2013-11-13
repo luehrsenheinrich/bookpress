@@ -62,8 +62,8 @@ class lh_fb_toolset {
 		list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
 		
 		// decode the data
-		$sig = base64_url_decode($encoded_sig);
-		$data = json_decode(base64_url_decode($payload), true);
+		$sig = $this->base64_url_decode($encoded_sig);
+		$data = json_decode($this->base64_url_decode($payload), true);
 		
 		// confirm the signature
 		$expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
