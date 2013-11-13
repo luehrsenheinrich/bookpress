@@ -12,8 +12,10 @@ if(!defined('WP_JS_URL')) {
 if(!defined('LANG_NAMESPACE')){
 	define( 'LANG_NAMESPACE', "bp");	
 }
-if(!defined('FB_APP_ID')){
-	define( 'FB_APP_ID', '414125188601439'); // This is the default bookpress app id, used as a fallback
+
+global $_bp_app_id;
+if(!isset($_bp_app_id)){
+	$_bp_app_id = '414125188601439'; // This is the default bookpress app id, used as a fallback
 }
 
 /*
@@ -24,6 +26,8 @@ require_once( dirname( __FILE__ ) . "/less/lib/less.inc.php");
 require_once( dirname( __FILE__ ) . "/less/lib/less.php" ); 			// The Less compiler
 require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );
 require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );
+require_once( dirname( __FILE__ ) . "/sources/lh.opengraph.php" );
+
 
 
 /*
