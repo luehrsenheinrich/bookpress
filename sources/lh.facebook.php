@@ -42,7 +42,7 @@ class lh_fb_toolset {
 			if($this->signed_request){
 				$tmp = $this->signed_request;
 				unset($tmp['app_data']);
-				setcookie('bp_signed_request', urlencode( base64_encode( json_encode($tmp) ) ) );
+				setcookie('bp_signed_request', urlencode( $this->base64_url_encode( json_encode($tmp) ) ) );
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = urldecode($this->base64_url_decode($_COOKIE['bp_signed_request']));
@@ -101,6 +101,17 @@ class lh_fb_toolset {
 	 */
 	private function base64_url_decode($input) {
 		return base64_decode(strtr($input, '-_', '+/'));
+	}
+	
+	/**
+	 * base64_url_encode function.
+	 * 
+	 * @access private
+	 * @param mixed $input
+	 * @return void
+	 */
+	private function base64_url_encode($input) {
+		return base64_encode(strtr($input, '+/', '-_'));
 	}
 }
 $lh_fb_toolset = new lh_fb_toolset();
