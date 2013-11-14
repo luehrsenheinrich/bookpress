@@ -43,7 +43,7 @@ class lh_fb_toolset {
 				$_SESSION['bp_signed_request'] = $_POST['signed_request'];
 			}
 		} elseif(isset($_SESSION['bp_signed_request'])){
-			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], FB_APP_SECRET);
+			$this->signed_request = $this->parse_signed_request($_SESSION['bp_signed_request'], FB_APP_SECRET);
 		} else {
 			$this->signed_request = false;
 		}
