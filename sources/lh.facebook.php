@@ -41,7 +41,7 @@ class lh_fb_toolset {
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], FB_APP_SECRET);
 			if($this->signed_request){
 				unset($this->signed_request['app_data']);
-				setcookie('bp_signed_request', urlencode( base64_encode( json_endcode($this->signed_request) ) ) );
+				setcookie('bp_signed_request', urlencode( base64_encode( json_encode($this->signed_request) ) ) );
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
 			$this->signed_request = json_decode($this->base64_url_decode($_COOKIE['bp_signed_request']), true);
