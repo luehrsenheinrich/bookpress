@@ -44,7 +44,7 @@ class lh_fb_toolset {
 				setcookie('bp_signed_request', urlencode( base64_encode( json_encode($this->signed_request) ) ) );
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
-			$this->signed_request = json_decode($this->base64_url_decode($_COOKIE['bp_signed_request']), true);
+			$this->signed_request = $this->base64_url_decode($_COOKIE['bp_signed_request']);
 		} else {
 			$this->signed_request = false;
 		}
