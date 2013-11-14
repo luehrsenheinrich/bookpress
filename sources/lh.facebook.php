@@ -47,6 +47,8 @@ class lh_fb_toolset {
 		} else {
 			$this->signed_request = false;
 		}
+		
+		var_dump($this->signed_request);
 	}
 	
 	/**
