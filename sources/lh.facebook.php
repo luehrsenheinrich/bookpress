@@ -65,6 +65,18 @@ class lh_fb_toolset {
 		}
 	}
 	
+	public function is_facebook_crawler(){
+		if (in_array($_SERVER['HTTP_USER_AGENT'], array(
+		  'facebookexternalhit/1.1 (+https://www.facebook.com/externalhit_uatext.php)',
+		  'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)'
+		))) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	/**
 	 * parse_signed_request function.
 	 * 
