@@ -23,7 +23,7 @@ require_once( dirname( __FILE__ ) . "/sources/meta_boxes.php" );		// Theme Meta 
 require_once( dirname( __FILE__ ) . "/sources/theme_update.php" );		// Update the Theme via Github
 require_once( dirname( __FILE__ ) . "/sources/lh.opengraph.php" );		// Open Graph Function
 require_once( dirname( __FILE__ ) . "/sources/lh.facebook.php" );		// Facebook Functions
-
+require_once( dirname( __FILE__ ) . "/sources/Mobile_Detect.php" );		// Mobile Detect Class
 
 
 /*
@@ -48,6 +48,9 @@ function init_bookpress(){
 	}	
 }
 add_action("wp", "init_bookpress", 9999);
+
+global $_bp_mobile_detect;
+$_bp_mobile_detect = new Mobile_Detect;
 
 /**
  * Enqueue the needed scripts and styles in the frontend

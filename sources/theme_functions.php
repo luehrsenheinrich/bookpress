@@ -239,6 +239,13 @@ function lh_activate_codemirror(){
 }
 add_action( 'admin_head', 'lh_activate_codemirror' );
 
+function init_session(){
+	if(!session_id()) {
+        session_start();
+    }
+}
+add_action( 'init', 'init_session' );
+
 
 
 
