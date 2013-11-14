@@ -7,6 +7,7 @@
 class lh_fb_toolset {
 	
 	private $signed_request;
+	public $fist_visit_in_page_tab = true;
 	
 	/**
 	 * __construct function.
@@ -40,17 +41,14 @@ class lh_fb_toolset {
 		if(isset($_POST['signed_request'])){ // First visit of the user, retrive and store that stuff!
 			$this->signed_request = $this->parse_signed_request($_POST['signed_request'], FB_APP_SECRET);
 			if($this->signed_request){
-				$tmp = $this->signed_request;
-				unset($tmp['app_data']);
-				setcookie('bp_signed_request', urlencode( $this->base64_url_encode( json_encode($tmp) ) ) );
+				$this->first_visit_in_page_tab = true;
+				setcookie('bp_signed_request', $_POST['signed_request']);
 			}
 		} elseif(isset($_COOKIE['bp_signed_request'])){
-			$this->signed_request = urldecode($this->base64_url_decode($_COOKIE['bp_signed_request']));
+			$this->signed_request = $this->parse_signed_request($_COOKIE['bp_signed_request'], FB_APP_SECRET);
 		} else {
 			$this->signed_request = false;
 		}
-		
-		var_dump($this->signed_request);
 	}
 	
 	/**
@@ -101,17 +99,6 @@ class lh_fb_toolset {
 	 */
 	private function base64_url_decode($input) {
 		return base64_decode(strtr($input, '-_', '+/'));
-	}
-	
-	/**
-	 * base64_url_encode function.
-	 * 
-	 * @access private
-	 * @param mixed $input
-	 * @return void
-	 */
-	private function base64_url_encode($input) {
-		return base64_encode(strtr($input, '+/', '-_'));
 	}
 }
 $lh_fb_toolset = new lh_fb_toolset();
