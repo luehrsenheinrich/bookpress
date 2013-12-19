@@ -72,7 +72,7 @@ class lh_open_graph {
 			return false;
 		}
 		
-		$tag = '<meta property="'.$tag_property.'" content="'.$tag_content.'" />';
+		$tag = '<meta property="'.$tag_property.'" content="'.htmlentities($tag_content).'" />';
 		
 		if($echo){
 			echo $tag;
