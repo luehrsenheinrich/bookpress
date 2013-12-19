@@ -43,7 +43,8 @@ jQuery(document).ready(function($){
 
 function open_add_page_tab_dialog(){
 	var appID = jQuery("#facebook_appid").val();
-	var url = "https://www.facebook.com/dialog/pagetab?app_id="+appID+"&display=popup&next=http://www.devserv.de";
+	var root = location.protocol + '//' + location.host;
+	var url = "https://www.facebook.com/dialog/pagetab?app_id="+appID+"&display=popup&next="+root;
 		
 	var popup = window.open(url, "add_page_tab", "width=500,height=200,status=yes,scrollbars=yes,resizable=yes");
 	popup.focus();

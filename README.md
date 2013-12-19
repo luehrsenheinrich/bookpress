@@ -19,7 +19,7 @@ Besides that, just install this theme into the "wp-content/themes" folder of you
 This theme is made possible by some awesome projects and even more awesome programmers! This is the space to praise them.
 
 ### [Twitter Bootstrap](http://getbootstrap.com)
-The *Twitter Bootstrap* provides a basic layout and unser interface elements for Bookpress.
+The *Twitter Bootstrap* provides a basic layout and user interface elements for Bookpress.
 
 ### [The LESS PHP Compiler](https://github.com/leafo/lessphp)
 LESS CSS makes it terribly easy to write very advanced styles with only a few lines of codes. Not only helps the built in PHP LESS Compiler, written by Leaf Corcoran, in development, it also compiles the LESS code entered by the user and (more or less) validates the custom CSS.

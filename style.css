@@ -1,10 +1,12 @@
-/*   
-Theme Name: Bookpress
-Theme URI: http://www.luehrsen-heinrich.de
+/*
+Theme Name: bookpress
+Theme URI: https://github.com/luehrsenheinrich/bookpress
 Description: Our Wordpress Theme to manage your facebook page tabs.
-Author: Hendrik Luehrsen & Volker Heinrich
+Author: Hendrik Luehrsen & all the contributors
 Author URI: http://www.luehrsen-heinrich.de
 Version: 1.0
+Text Domain: bp
+Domain Path: /lang
 */
 
 /* NO STYLES HERE - REFER TO style_less.css */

@@ -10,12 +10,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?php wp_title(); ?></title>
-    <meta name="viewport" content="width=device-width">
-    
+	<meta name="viewport" content="width=830, initial-scale=1" />
+	    
     <?php wp_head(); ?>
     
     <?php
-    	if(is_singular()){
+    	if(is_singular() && !is_front_page()){
 	    	$styles = get_post_meta($post->ID, "_styles", true);
 	    	if(isset($styles['css']) && $styles['css'] != ""){
 		    	?>

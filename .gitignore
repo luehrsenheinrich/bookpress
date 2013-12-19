@@ -1,5 +1,6 @@
 *.cache
 *.log
+*.cache
 github-pull.php
 
 .DS_Store

@@ -217,7 +217,8 @@ add_action( 'edit_form_after_title', 'lh_disable_editor' );
 function lh_activate_codemirror(){
 	global $post, $pagenow;
 	$raw_html = (bool) get_post_meta($post->ID, "_lh_raw_html", true);
-	if($pagenow == "post.php" & $post->post_type == "page"){
+	$post_types = array("page", "post");
+	if($pagenow == "post.php" & in_array($post->post_type, $post_types)){
 		?>
 		<script type="text/javascript">
 			var initLessEditor = true;
