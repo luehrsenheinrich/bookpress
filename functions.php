@@ -33,9 +33,15 @@ $css_file = dirname(__FILE__).'/style_less.css';
 $less_file = dirname(__FILE__).'/less/style.less';
 autoCompileLess($less_file,$css_file);
 
+$css_file = dirname(__FILE__).'/editor-style.css';
+$less_file = dirname(__FILE__).'/less/editor.less';
+autoCompileLess($less_file,$css_file);
+
 $css_file = dirname(__FILE__).'/admin/admin.css';
 $less_file = dirname(__FILE__).'/admin/less/admin.less';
 autoCompileLess($less_file,$css_file);
+
+add_editor_style();
 
 
 function init_bookpress(){
